@@ -1,59 +1,149 @@
-# Employee
+# Employee Portal
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+A modern Angular-based employee portal with login functionality and dashboard featuring profile management, leave requests, and payslip access.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- **Secure Login**: Employee authentication with Employee ID and Password
+- **Dashboard**: Central hub with three main sections
+- **Profile Management**: View detailed employee profile information
+- **Leave Management**: Track leave history and quotas
+- **Payslip Access**: View payroll information and download PDF payslips
+- **Responsive Design**: Modern UI that works on all devices
+- **Local Storage**: Employee ID persistence across sessions
 
-```bash
-ng serve
+## Prerequisites
+
+- Node.js (v16 or higher)
+- Angular CLI (v17 or higher)
+- Backend server running on port 3000
+
+## Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd employee
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start the backend server**
+   ```bash
+   cd backend
+   npm install
+   node server.js
+   ```
+   The backend should be running on `http://localhost:3000`
+
+4. **Start the Angular application**
+   ```bash
+   npm start
+   ```
+   The application will be available at `http://localhost:4200`
+
+## Usage
+
+### Login
+- Navigate to `http://localhost:4200`
+- Use the following test credentials:
+  - **Employee ID**: `1`
+  - **Password**: `12345`
+
+### Dashboard
+After successful login, you'll be redirected to the dashboard with three main cards:
+- **Profile**: View employee information
+- **Leave Request**: Check leave history and quotas
+- **Payslip**: Access payroll data and download PDF
+
+### Navigation
+- Each card can be clicked to view detailed information
+- Use the "Back to Dashboard" button to return to the main dashboard
+- Use the "Logout" button to sign out
+
+## API Endpoints
+
+The application connects to the following backend endpoints:
+
+- `POST /employee-login` - Employee authentication
+- `POST /employee-profile` - Get employee profile data
+- `POST /employee-leave` - Get leave information
+- `POST /employee-payroll` - Get payroll information
+- `POST /api/payslip-pdf` - Download payslip PDF
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── login/
+│   │   └── login.component.ts
+│   ├── dashboard/
+│   │   └── dashboard.component.ts
+│   ├── profile/
+│   │   └── profile.component.ts
+│   ├── leave/
+│   │   └── leave.component.ts
+│   ├── payslip/
+│   │   └── payslip.component.ts
+│   ├── app.component.ts
+│   ├── app.component.html
+│   ├── app.routes.ts
+│   └── app.config.ts
+├── index.html
+└── main.ts
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Development
 
-## Code scaffolding
+### Adding New Features
+1. Create new components in the `src/app/` directory
+2. Update routes in `app.routes.ts`
+3. Add any new API endpoints to the backend server
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Styling
+- All components use inline styles for better encapsulation
+- Responsive design with CSS Grid and Flexbox
+- Modern gradient backgrounds and card-based layouts
 
-```bash
-ng generate component component-name
-```
+### State Management
+- Employee ID is stored in localStorage for session persistence
+- No external state management libraries required
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Troubleshooting
 
-```bash
-ng generate --help
-```
+### CORS Issues
+The application includes a proxy configuration (`proxy.conf.json`) to handle CORS issues. If you encounter CORS errors:
 
-## Building
+1. Ensure the backend server is running on port 3000
+2. Check that the proxy configuration is properly set in `angular.json`
+3. Restart the Angular development server
 
-To build the project run:
+### Login Issues
+- Verify the backend server is running
+- Check that the test credentials are correct
+- Ensure the API endpoints are accessible
 
-```bash
-ng build
-```
+### PDF Download Issues
+- Make sure the backend PDF endpoint is working
+- Check browser console for any errors
+- Verify the employee ID is properly stored in localStorage
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Technologies Used
 
-## Running unit tests
+- **Frontend**: Angular 17, TypeScript, CSS3
+- **Backend**: Node.js, Express.js
+- **HTTP Client**: Angular HttpClient
+- **Routing**: Angular Router
+- **State Management**: LocalStorage
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## License
 
-```bash
-ng test
-```
+This project is for demonstration purposes only.
 
-## Running end-to-end tests
+## Support
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+For any issues or questions, please check the troubleshooting section above or contact the development team.
